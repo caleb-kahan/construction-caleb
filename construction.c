@@ -23,10 +23,17 @@ struct person exampleProducer(){
   return caleb;
 }
 void structPrinter(struct person caleb){
-  printf("Person's IQ: %d, Person's Zodiac Sign: %s\n", caleb.IQ, caleb.ZodiacSign);
+  printf("Person's IQ: %d, Person's Zodiac Sign: %s\n\n", caleb.IQ, caleb.ZodiacSign);
+}
+void structModifier(struct person *caleb, int newIQ, char *newSign){
+  caleb->IQ = newIQ;
+  caleb->ZodiacSign = newSign;
 }
 int main(){
   struct person caleb = exampleProducer();
+  structPrinter(caleb);
+  printf("Modifing the IQ to 120 and the zodiac sign to scorpio\n\n");
+  structModifier(&caleb, 120, "Scorpio");
   structPrinter(caleb);
   return 0;
 }
